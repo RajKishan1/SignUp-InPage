@@ -37,7 +37,7 @@ const Leftside = () => {
     }
   };
   useEffect(() => {
-    renderContent()
+    renderContent();
   }, [forgotPassword]);
   return (
     <div className="h-full w-[35%] bg-[#1C1E21] flex flex-col justify-start items-center ">
@@ -59,5 +59,4 @@ const Leftside = () => {
     </div>
   );
 };
-
 export default Leftside;
