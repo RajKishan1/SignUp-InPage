@@ -14,19 +14,34 @@ const Leftside = () => {
   const [forgotPassword, setForgotPassword] = useState(false);
   const [emailBtn, setEmailBtn] = useState(false);
 
-  const disp = () => {
-    useEffect(() => {
-      emailBtn ? <OtpForm /> : console.log("false");
+  useEffect(() => {
+    if (forgotPassword) {
+      console.log("it is working");
+    } else {
+      console.log("false");
+    }
+  }, [forgotPassword]);
 
-      // return () => {
-      //   // second;
-      // };
-    }, [emailBtn]);
+  const renderContent = () => {
+    if (isLogin) {
+      return (
+        <Login
+          forgotPassword={forgotPassword}
+          setForgotPassword={setForgotPassword}
+        />
+      );
+    } else if (forgotPassword) {
+      return <EmailForm />;
+    } else {
+      return <GptCreateAcc />;
+    }
   };
+  useEffect(() => {
+    renderContent()
+  }, [forgotPassword]);
   return (
     <div className="h-full w-[35%] bg-[#1C1E21] flex flex-col justify-start items-center ">
       <TextArea />
-      {/* <CreateAcc /> */}
       {/* {isLogin ? (
         <Login pswrd={forgotPassword} setpswrd={setForgotPassword} />
       ) : forgotPassword ? (
@@ -35,9 +50,10 @@ const Leftside = () => {
         <GptCreateAcc />
       )} */}
       {/* <NewPassword /> */}
-      <EmailForm emailBtn={emailBtn} setEmailBtn={setEmailBtn} />
+      {/* <EmailForm emailBtn={emailBtn} setEmailBtn={setEmailBtn} /> */}
       {/* {disp()} */}
-      <OtpForm />
+      {renderContent()}
+      {/* <OtpForm /> */}
       <SocialProfile Login={isLogin} setLogin={setIsLogin} />
       {console.log(isLogin)}
     </div>
@@ -45,10 +61,3 @@ const Leftside = () => {
 };
 
 export default Leftside;
-const display = (isLogin, forgotPassword) => {
-  if (isLogin === true) {
-    return <Login pswrd={forgotPassword} setpswrd={setForgotPassword} />;
-  } else if (forgotPassword === true) {
-    return <EmailForm />;
-  } else return <GptCreateAcc />;
-};

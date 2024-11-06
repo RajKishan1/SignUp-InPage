@@ -3,16 +3,15 @@ import Input from "@/components/homepage/leftcomponents/input";
 import { CircleUser, LockKeyhole } from "lucide-react";
 import Button from "./button";
 
-const Login = ({ pswrd, setpswrd }) => {
+const Login = ({ forgotPassword, setForgotPassword }) => {
   return (
     <div className="h-[50%] w-[85%]  flex flex-col justify-center items-center gap-4 mt-5 mb-12">
       <Input icon={<CircleUser />} text="User Name" type="text" />
       <Input icon={<LockKeyhole />} text="passsword" type="password" />
       <a
         className="text-blue-600 text-lg ml-[-19vw] cursor-pointer"
-      
         onClick={() => {
-          setpswrd(true);
+          setForgotPassword(true);
         }}
       >
         Forget Password ?
