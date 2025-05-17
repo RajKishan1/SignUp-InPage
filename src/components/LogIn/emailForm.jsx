@@ -1,5 +1,5 @@
-import Button from "@/components/homepage/leftcomponents/button";
-import Input from "@/components/homepage/leftcomponents/input";
+import Button from "@/components/button";
+import Input from "@/components/input";
 import { CircleUser } from "lucide-react";
 import React from "react";
 
@@ -11,13 +11,7 @@ const EmailForm = ({ emailBtn, setEmailBtn }) => {
         type={"email"}
         text={"Enter your Email address"}
       />
-      <Button
-        text={"Submit"}
-        onClick={() => {
-          console.log("clicked");
-          setEmailBtn(true);
-        }}
-      />
+      <Button text={"Submit"} href="/otp-form" />
     </div>
   );
 };

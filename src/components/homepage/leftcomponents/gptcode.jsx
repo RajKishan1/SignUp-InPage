@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Input from "@/components/homepage/leftcomponents/input";
+import Input from "@/components/input";
 import { CircleUser, LockKeyhole, Mail } from "lucide-react";
-import Button from "@/components/homepage/leftcomponents/button";
-import InputVerifier from "./inputVerifier";
+import Button from "@/components/button";
+import { usePathname } from "next/navigation";
+// import InputVerifier from "./inputVerifier";
 
 const Msg = ({ message, isVisible }) => {
   return (
@@ -24,8 +25,20 @@ const GptCreateAcc = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [check, setCheck] = useState(false);
 
+  const inputVerifier = ({ e_mail }) => {
+    e_mail.includes("@")
+      ? console.log("email is valid")
+      : console.log("invalid email"),
+      setErrorMessage("Invalid Email !!");
+  };
+
+  const pathname = usePathname();
+  {
+    console.log(pathname);
+  }
   return (
     <div className="h-[50%] w-[85%] flex flex-col justify-center items-center gap-4 my-5">
+      {/* { pathname !== "/sign-in" && */}
       <Input
         icon={<Mail />}
         text="abc@xyz.com"
@@ -33,7 +46,6 @@ const GptCreateAcc = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      {/* {console.log(email)} */}
 
       <Input
         icon={<CircleUser />}
@@ -41,14 +53,13 @@ const GptCreateAcc = () => {
         type="text"
         onChange={(e) => setUsername(e.target.value)}
       />
-      {/* {console.log(username)} */}
       <Input
         icon={<LockKeyhole />}
         text="Password"
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Msg message="Invalid Email !!" isVisible={!!errorMessage} />
+      <Msg message={errorMessage} isVisible={!!errorMessage} />
       <div className="h-[15%] w-full flex justify-around items-center">
         <input
           className="h-[40%] w-[10%]"
@@ -64,14 +75,7 @@ const GptCreateAcc = () => {
           </a>
         </h2>
       </div>
-      <Button
-        text={"Start Coding Now"}
-        onClick={() => {
-          {
-            InputVerifier;
-          }
-        }}
-      />
+      <Button text={"Start Coding Now"} />
     </div>
   );
 };

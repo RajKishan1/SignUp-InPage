@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "@/components/homepage/leftcomponents/input";
+import Input from "@/components/input";
 import { CircleUser, LockKeyhole, Mail } from "lucide-react";
-import Button from "@/components/homepage/leftcomponents/button";
+import Button from "@/components/button";
 const Msg = ({ message }) => {
   return (
     <div className="h-[4vh] w-[20vh] bg-white text-red-500 font-semibold flex items-center justify-center rounded-xl hidden ">
